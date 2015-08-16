@@ -272,6 +272,9 @@ shitu.prototype = {
                 e.preventDefault();
             }
         });
+        /**
+        * 关闭操作
+        */
         addEvent(me.close, 'click', function(e) {
             // 绑定关闭按钮
             me.isIe? window.document.execCommand('Stop'): window.stop();
