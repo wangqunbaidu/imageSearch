@@ -273,8 +273,8 @@ shitu.prototype = {
             }
         });
         /**
-        * 关闭操作
-        */
+         * 关闭操作
+         */
         addEvent(me.close, 'click', function(e) {
             // 绑定关闭按钮
             me.isIe? window.document.execCommand('Stop'): window.stop();
@@ -289,7 +289,9 @@ shitu.prototype = {
             }
             me.closest();
         });
+
         if (me.isOpera||!window.FileReader) return;
+
         addEvent(me.url, 'paste', function(e){
             var clipboardData = e.clipboardData||window.clipboardData;
             var items = clipboardData.items;
@@ -300,20 +302,24 @@ shitu.prototype = {
                 }
             }
         });
+
         addEvent(document, 'dragenter', function(e) {
             me.point.style.display = 'none';
             me.displayst();
             me.draghp.style.display = '';
         });
+
         addEvent(document, 'dragover', function(e) {
             me.point.style.display = 'none';
             me.displayst();
             me.draghp.style.display = '';
         });
+
         addEvent(content, 'dragenter', function(e) {
             e.stopPropagation();
             e.preventDefault();
         });
+        
         addEvent(content, 'dragover', function(e) {
             e.stopPropagation();
             e.preventDefault();
