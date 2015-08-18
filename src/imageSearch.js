@@ -124,7 +124,9 @@ var imageSearch = function (id, opt) {
 };
 
 imageSearch.prototype = {
-
+    this.render = function(){
+    	console.log(1);
+    };
 };
 var shitu = function() {
     this.homeForm = document.getElementById('homeSearchForm');	//页面搜索框
@@ -319,7 +321,7 @@ shitu.prototype = {
             e.stopPropagation();
             e.preventDefault();
         });
-        
+
         addEvent(content, 'dragover', function(e) {
             e.stopPropagation();
             e.preventDefault();
