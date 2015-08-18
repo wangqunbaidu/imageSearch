@@ -12,69 +12,9 @@ var imageSearch = function (id, opt) {
 	// 配置项参数
 	this.opt = opt || {};
 	// 模板
-	this.tpl = '<div id="stcontent">
-				    <a class="sttb" hidefocus="true" id="sttb" href="javascript:void(0)" style="display:none">
-				        <img class="st_camera" src="./images/camera.png" width="21" height="20">
-				        <img class="st_camera_on" src="./images/camera_on.png" width="21" height="20">
-				        <div class="st_tips">上传图片，搜索相关信息</div>
-				        <div class="st_tips_arrow_in"></div>
-				        <div class="st_tips_arrow_out"></div>
-				    </a>
-			    <div id="stsug" class="stsug" style="display:none">
-			        <div id="sthead">搜索图片信息</div>
-			        <form id="form1" target="_self" enctype="multipart/form-data" action="/pictureup/uploadshitu" method="get" name="form1">
-			            <div id="sturl"> 
-			            	<span class="stuwr">
-			                    <input type="text" id="stuurl" value="" autocomplete="off" class="stuurl" name="objurl">
-			                </span>
-			                <span class="stsb">
-			                    <input type="submit" id="sbobj" class="stsb2" onmousedown="this.className='stsb2 stsb3'" onmouseout="this.className='stsb2'" onmouseover="this.className='stsb2 stsb4'" value="百度一下">
-			                </span>
-			            </div>
-			            <input name="rt" value="0" type="hidden">
-			            <input name="rn" value="10" type="hidden">
-			            <input name="ct" value="1" type="hidden">
-			            <input name="stt" value="0" type="hidden">
-			            <input name="tn" value="shituresultpc" type="hidden">
-			            <input name="filename" id="filename" value="" type="hidden">
-			            <input id="shitu1" name="uptype" value="paste" type="hidden">
-			        </form>
-			        <div class="stf">
-			            <form id="form2" target="_self" enctype="multipart/form-data" action="/pictureup/uploadshitu" method="post" name="form2"> 
-			            	<a id="uploadImg" href="javascript:void(0)">从本地上传
-			                    <input type="file" name="image" id="stfile" size="2">
-			                    <span id="flashcontent"></span>
-			                </a>
-			 				<span class="st_paste_url">粘贴图片网址</span>
-			                <img id="sthelp" width="13" height="13" src="./images/mark.png">
-			                <div class="st_dragtg" id="dragtg" style="display:none;">提示：您也可以把图片拖到这里</div>
-			                <input name="uptype" value="upload_pc" type="hidden">
-			            </form>
-			        </div>
-			        <div class="stmore" id="stmore" style="display:none;"> <b>如何粘贴图片网址</b>
-			            <ul>
-			                <li>右键点击网页上的图片，选择“复制图片网址”；</li>
-			                <li>在搜索框中，粘贴该网址(Ctrl+V)，点击“百度一下”</li>
-			            </ul>
-			            <div class="stmore_arrow_in"></div>
-			            <div class="stmore_arrow_out"></div>
-			        </div> 
-			        <a class="closest" href="javascript:void(0)" id="closest" title="关闭">关闭</a>
-			        <div id="point" style="display:none;">
-			            <img src="http://img1.bdstatic.com/img/image/shitu/feimg/uploading.gif"><span>上传中，请稍候...</span>
-			        </div>
-			        <div id="dragtip" style="display:none;">
-			            <div>搜索图片信息</div> <span>将图片拖到此处</span>
-			            <div class="drag_dot_area drag_dot_left_top"></div>
-			            <div class="drag_dot_area drag_dot_left_bottom"></div>
-			            <div class="drag_dot_area drag_dot_right_top"></div>
-			            <div class="drag_dot_area drag_dot_right_bottom"></div>
-			        </div>
-			        <div class="left-border"></div>
-			        <div class="right-border"></div>
-			    </div>
-			</div>';
+	this.tpl = '<div id="stcontent"><a class="sttb" hidefocus="true" id="sttb" href="javascript:void(0)" style="display:none"><img class="st_camera" src="http://img2.bdstatic.com/static/home/widget/search_box_home/shitu/images/camera_b659d28.png" width="21" height="20"> <img class="st_camera_on" src="http://img0.bdstatic.com/static/home/widget/search_box_home/shitu/images/camera_on_5d123b7.png" width="21" height="20"><div class="st_tips">上传图片，搜索相关信息</div><div class="st_tips_arrow_in"></div><div class="st_tips_arrow_out"></div></a><div id="stsug" class="stsug" style="display:none"><div id="sthead">搜索图片信息</div><form id="form1" target="_self" enctype="multipart/form-data" action="/pictureup/uploadshitu" method="get" name="form1"><div id="sturl"><span class="stuwr"><input type="text" id="stuurl" value="" autocomplete="off" class="stuurl" name="objurl"></span> <span class="stsb"><input type="submit" id="sbobj" class="stsb2" onmousedown="this.className=&quot;stsb2 stsb3&quot;" onmouseout="this.className=&quot;stsb2&quot;" onmouseover="this.className=&quot;stsb2 stsb4&quot;" value="百度一下"></span></div><input name="rt" value="0" type="hidden"> <input name="rn" value="10" type="hidden"> <input name="ct" value="1" type="hidden"> <input name="stt" value="0" type="hidden"> <input name="tn" value="shituresultpc" type="hidden"> <input name="filename" id="filename" value="" type="hidden"> <input id="shitu1" name="uptype" value="paste" type="hidden"></form><div class="stf"><form id="form2" target="_self" enctype="multipart/form-data" action="/pictureup/uploadshitu" method="post" name="form2"><a id="uploadImg" href="javascript:void(0)">从本地上传 <input type="file" name="image" id="stfile" size="2"> <span id="flashcontent"></span></a> <span class="st_paste_url">粘贴图片网址</span> <img id="sthelp" width="13" height="13" src="./images/mark.png"><div class="st_dragtg" id="dragtg" style="display:none">提示：您也可以把图片拖到这里</div><input name="uptype" value="upload_pc" type="hidden"></form></div><div class="stmore" id="stmore" style="display:none"><b>如何粘贴图片网址</b><ul><li>右键点击网页上的图片，选择“复制图片网址”；</li><li>在搜索框中，粘贴该网址(Ctrl+V)，点击“百度一下”</li></ul><div class="stmore_arrow_in"></div><div class="stmore_arrow_out"></div></div><a class="closest" href="javascript:void(0)" id="closest" title="关闭">关闭</a><div id="point" style="display:none"><img src="http://img1.bdstatic.com/img/image/shitu/feimg/uploading.gif"><span>上传中，请稍候...</span></div><div id="dragtip" style="display:none"><div>搜索图片信息</div><span>将图片拖到此处</span><div class="drag_dot_area drag_dot_left_top"></div><div class="drag_dot_area drag_dot_left_bottom"></div><div class="drag_dot_area drag_dot_right_top"></div><div class="drag_dot_area drag_dot_right_bottom"></div></div><div class="left-border"></div><div class="right-border"></div></div></div>';
 	this.dialog = '';
+	$(this.tpl).appendTo($('#' + id));
 
 	window.__originTitle = document.title;
 
@@ -124,9 +64,9 @@ var imageSearch = function (id, opt) {
 };
 
 imageSearch.prototype = {
-    this.render = function(){
+    render: function(){
     	console.log(1);
-    };
+    }
 };
 var shitu = function() {
     this.homeForm = document.getElementById('homeSearchForm');	//页面搜索框
@@ -150,7 +90,7 @@ var shitu = function() {
     this.dragts = document.getElementById('dragtg');
     this.clickurl = 'http://stu.baidu.com';
     this.onuploadtg = 0;
-    this.ftn = document.getElementById('stftn').value || '';
+    //this.ftn = document.getElementById('stftn').value || '';
     this.isDisplay = 0;
     this.isSubmit = 0;
 	this.chrome = /chrome\/(\d+\.\d+)/i.test(navigator.userAgent)? + RegExp['\x241']: undefined;
