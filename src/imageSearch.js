@@ -6,17 +6,16 @@
  * @author: wangqun
  * @date: 2015/03/08
  */
-var imageSearch = function (id, opt) {
-	// 展现相机按钮选择器ID
-	this.id = id;
-	// 配置项参数
-	this.opt = opt || {};
-	// 模板
-	this.tpl = '<div id="stcontent"><a class="sttb" hidefocus="true" id="sttb" href="javascript:void(0)" style="display:none"><img class="st_camera" src="http://img2.bdstatic.com/static/home/widget/search_box_home/shitu/images/camera_b659d28.png" width="21" height="20"> <img class="st_camera_on" src="http://img0.bdstatic.com/static/home/widget/search_box_home/shitu/images/camera_on_5d123b7.png" width="21" height="20"><div class="st_tips">上传图片，搜索相关信息</div><div class="st_tips_arrow_in"></div><div class="st_tips_arrow_out"></div></a><div id="stsug" class="stsug" style="display:none"><div id="sthead">搜索图片信息</div><form id="form1" target="_self" enctype="multipart/form-data" action="/pictureup/uploadshitu" method="get" name="form1"><div id="sturl"><span class="stuwr"><input type="text" id="stuurl" value="" autocomplete="off" class="stuurl" name="objurl"></span> <span class="stsb"><input type="submit" id="sbobj" class="stsb2" onmousedown="this.className=&quot;stsb2 stsb3&quot;" onmouseout="this.className=&quot;stsb2&quot;" onmouseover="this.className=&quot;stsb2 stsb4&quot;" value="百度一下"></span></div><input name="rt" value="0" type="hidden"> <input name="rn" value="10" type="hidden"> <input name="ct" value="1" type="hidden"> <input name="stt" value="0" type="hidden"> <input name="tn" value="shituresultpc" type="hidden"> <input name="filename" id="filename" value="" type="hidden"> <input id="shitu1" name="uptype" value="paste" type="hidden"></form><div class="stf"><form id="form2" target="_self" enctype="multipart/form-data" action="/pictureup/uploadshitu" method="post" name="form2"><a id="uploadImg" href="javascript:void(0)">从本地上传 <input type="file" name="image" id="stfile" size="2"> <span id="flashcontent"></span></a> <span class="st_paste_url">粘贴图片网址</span> <img id="sthelp" width="13" height="13" src="./images/mark.png"><div class="st_dragtg" id="dragtg" style="display:none">提示：您也可以把图片拖到这里</div><input name="uptype" value="upload_pc" type="hidden"></form></div><div class="stmore" id="stmore" style="display:none"><b>如何粘贴图片网址</b><ul><li>右键点击网页上的图片，选择“复制图片网址”；</li><li>在搜索框中，粘贴该网址(Ctrl+V)，点击“百度一下”</li></ul><div class="stmore_arrow_in"></div><div class="stmore_arrow_out"></div></div><a class="closest" href="javascript:void(0)" id="closest" title="关闭">关闭</a><div id="point" style="display:none"><img src="http://img1.bdstatic.com/img/image/shitu/feimg/uploading.gif"><span>上传中，请稍候...</span></div><div id="dragtip" style="display:none"><div>搜索图片信息</div><span>将图片拖到此处</span><div class="drag_dot_area drag_dot_left_top"></div><div class="drag_dot_area drag_dot_left_bottom"></div><div class="drag_dot_area drag_dot_right_top"></div><div class="drag_dot_area drag_dot_right_bottom"></div></div><div class="left-border"></div><div class="right-border"></div></div></div>';
-	this.dialog = '';
-	$(this.tpl).appendTo($('#' + id));
+ var shitu = function(id, opt){
 
-	window.__originTitle = document.title;
+ 
+var imageSearch = function (id, opt) {
+    // 展现相机按钮选择器ID
+    this.id = id;
+    // 配置项参数
+    this.opt = opt || {};
+
+    window.__originTitle = document.title;
 
     /**
      * flash初始化完成
@@ -45,7 +44,8 @@ var imageSearch = function (id, opt) {
             return false;
         }
         else if (boo) {
-            window.location.href = result;
+            window.location.href = 'http://image.baidu.com' + result;
+            
         };
     };
 
@@ -63,52 +63,59 @@ var imageSearch = function (id, opt) {
 
 };
 
-imageSearch.prototype = {
-    render: function(){
-    	console.log(1);
-    }
-};
-var shitu = function() {
-    this.homeForm = document.getElementById('homeSearchForm');	//页面搜索框
-    this.point = document.getElementById('point');	//提示层
-    this.content = document.getElementById('stsug');	//最外层div
-    this.submitobj = document.getElementById('sbobj');	//提交按钮 百度一下
-    this.form = document.getElementById('form1');	//form表单
-    this.form2 = document.getElementById('form2');
-    this.shituvalue = document.getElementById('shitu1');	//用于给后端传递识图的类型：粘贴，上传或拖拽
-    this.shituvalue2 = document.getElementById('shitu2');   
-    this.file = document.getElementById('stfile');	//本地上传
-    this.url = document.getElementById('stuurl');	//输入框
-    this.entry = document.getElementById('sttb');	//识图入口
-    this.shituAd=document.getElementById('shituEnter');	//识图入口
-    this.close = document.getElementById('closest');	//识图关闭按钮
-    this.tips = document.getElementById('stmore');	//提示层
-    this.hpobj = document.getElementById('hp');	//高级帮助栏
-    this.sthp = document.getElementById('sthelp');
-    this.draghp = document.getElementById('dragtip');
-    this.kw = document.getElementById('kw');
-    this.dragts = document.getElementById('dragtg');
-    this.clickurl = 'http://stu.baidu.com';
-    this.onuploadtg = 0;
-    //this.ftn = document.getElementById('stftn').value || '';
-    this.isDisplay = 0;
-    this.isSubmit = 0;
-	this.chrome = /chrome\/(\d+\.\d+)/i.test(navigator.userAgent)? + RegExp['\x241']: undefined;
-    this.isIe =/msie (\d+\.\d+)/i.test(navigator.userAgent)? (document.documentMode || + RegExp['\x241']): undefined;
-    this.isOpera=/opera(\/| )(\d+(\.\d+)?)(.+?(version\/(\d+(\.\d+)?)))?/i.test(navigator.userAgent)? + ( RegExp['\x246'] || RegExp['\x242'] ): undefined;
-    this.callbacks={
-        aftershow: {},
-        beforehide: {}
-    };
-};
+
 /**
  * 识图组件
  */
-shitu.prototype = {
-	/**
+imageSearch.prototype = {
+    /**
      * 识图组件初始化
      */
     init: function() {
+        this.render(this.id, this.opt);
+        this.getTplArr();
+        this.bindEvent();
+    },
+    render: function(){
+        this.tpl = '<div id="stcontent"><a class="sttb" hidefocus="true" id="sttb" href="javascript:void(0)" style="display:none"><img class="st_camera" src="http://img2.bdstatic.com/static/home/widget/search_box_home/shitu/images/camera_b659d28.png" width="21" height="20"> <img class="st_camera_on" src="http://img0.bdstatic.com/static/home/widget/search_box_home/shitu/images/camera_on_5d123b7.png" width="21" height="20"><div class="st_tips">上传图片，搜索相关信息</div><div class="st_tips_arrow_in"></div><div class="st_tips_arrow_out"></div></a><div id="stsug" class="stsug" style="display:none"><div id="sthead">搜索图片信息</div><form id="form1" target="_self" enctype="multipart/form-data" action="http://image.baidu.com/pictureup/uploadshitu" method="get" name="form1"><div id="sturl"><span class="stuwr"><input type="text" id="stuurl" value="" autocomplete="off" class="stuurl" name="objurl"></span> <span class="stsb"><input type="submit" id="sbobj" class="stsb2" onmousedown="this.className=&quot;stsb2 stsb3&quot;" onmouseout="this.className=&quot;stsb2&quot;" onmouseover="this.className=&quot;stsb2 stsb4&quot;" value="百度一下"></span></div><input name="rt" value="0" type="hidden"> <input name="rn" value="10" type="hidden"> <input name="ct" value="1" type="hidden"> <input name="stt" value="0" type="hidden"> <input name="tn" value="shituresultpc" type="hidden"> <input name="filename" id="filename" value="" type="hidden"> <input id="shitu1" name="uptype" value="paste" type="hidden"></form><div class="stf"><form id="form2" target="_self" enctype="multipart/form-data" action="http://image.baidu.com/pictureup/uploadshitu" method="post" name="form2"><a id="uploadImg" href="javascript:void(0)">从本地上传 <input type="file" name="image" id="stfile" size="2"> <span id="flashcontent"><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="STUUpload" width="103" height="28" align="top"><param name="wmode" value="transparent"><param name="allowscriptaccess" value="always"><param name="movie" value="http://img.baidu.com/img/image/stu/STUpload2.swf?v=0108"><param name="flashvars" value="uploadurl=http%3A%2F%2Fimage.baidu.com%2Fpictureup%2Fuploadshitu%3Ffr%3Dflash%26fm%3Dindex%26pos%3Dupload&amp;logurl=http%3A%2F%2Fimgstat.baidu.com%2F9.gif%3Frainbow%3D1%26type%3DsearchNum%26p%3DuploadSearch%26form%3Dwantu%26flash%3D1%26t%3D&amp;compress=1"><embed width="103" height="28" align="top" wmode="transparent" allowscriptaccess="always" errormessage="载入FLASH出错" ver="10.1.0" flashvars="uploadurl=http%3A%2F%2Fimage.baidu.com%2Fpictureup%2Fuploadshitu%3Ffr%3Dflash%26fm%3Dindex%26pos%3Dupload&amp;logurl=http%3A%2F%2Fimgstat.baidu.com%2F9.gif%3Frainbow%3D1%26type%3DsearchNum%26p%3DuploadSearch%26form%3Dwantu%26flash%3D1%26t%3D&amp;compress=1" src="http://img.baidu.com/img/image/stu/STUpload2.swf?v=0108" name="STUUpload" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></object></span></a> <span class="st_paste_url">粘贴图片网址</span> <img id="sthelp" width="13" height="13" src="./images/mark.png"><div class="st_dragtg" id="dragtg" style="display:none">提示：您也可以把图片拖到这里</div><input name="uptype" value="upload_pc" type="hidden"></form></div><div class="stmore" id="stmore" style="display:none"><b>如何粘贴图片网址</b><ul><li>右键点击网页上的图片，选择“复制图片网址”；</li><li>在搜索框中，粘贴该网址(Ctrl+V)，点击“百度一下”</li></ul><div class="stmore_arrow_in"></div><div class="stmore_arrow_out"></div></div><a class="closest" href="javascript:void(0)" id="closest" title="关闭">关闭</a><div id="point" style="display:none"><img src="http://img1.bdstatic.com/img/image/shitu/feimg/uploading.gif"><span>上传中，请稍候...</span></div><div id="dragtip" style="display:none"><div>搜索图片信息</div><span>将图片拖到此处</span><div class="drag_dot_area drag_dot_left_top"></div><div class="drag_dot_area drag_dot_left_bottom"></div><div class="drag_dot_area drag_dot_right_top"></div><div class="drag_dot_area drag_dot_right_bottom"></div></div><div class="left-border"></div><div class="right-border"></div></div></div>';
+        this.dialog = '';
+        $(this.tpl).appendTo($('#' + this.id));
+
+        
+    },
+    getTplArr: function(){
+        this.point = document.getElementById('point');  //提示层
+        this.content = document.getElementById('stsug');    //最外层div
+        this.submitobj = document.getElementById('sbobj');  //提交按钮 百度一下
+        this.form = document.getElementById('form1');   //form表单
+        this.form2 = document.getElementById('form2');
+        this.shituvalue = document.getElementById('shitu1');    //用于给后端传递识图的类型：粘贴，上传或拖拽
+        this.shituvalue2 = document.getElementById('shitu2');   
+        this.file = document.getElementById('stfile');  //本地上传
+        this.url = document.getElementById('stuurl');   //输入框
+        this.entry = document.getElementById('sttb');   //识图入口
+        this.shituAd=document.getElementById('shituEnter'); //识图入口
+        this.close = document.getElementById('closest');    //识图关闭按钮
+        this.tips = document.getElementById('stmore');  //提示层
+        this.hpobj = document.getElementById('hp'); //高级帮助栏
+        this.sthp = document.getElementById('sthelp');
+        this.draghp = document.getElementById('dragtip');
+        this.kw = document.getElementById('kw');
+        this.dragts = document.getElementById('dragtg');
+        this.clickurl = 'http://stu.baidu.com';
+        this.onuploadtg = 0;
+        //this.ftn = document.getElementById('stftn').value || '';
+        this.isDisplay = 0;
+        this.isSubmit = 0;
+        this.chrome = /chrome\/(\d+\.\d+)/i.test(navigator.userAgent)? + RegExp['\x241']: undefined;
+        this.isIe = /msie (\d+\.\d+)/i.test(navigator.userAgent)? (document.documentMode || + RegExp['\x241']): undefined;
+        this.isOpera = /opera(\/| )(\d+(\.\d+)?)(.+?(version\/(\d+(\.\d+)?)))?/i.test(navigator.userAgent)? + ( RegExp['\x246'] || RegExp['\x242'] ): undefined;
+        this.callbacks = {
+            aftershow: {},
+            beforehide: {}
+        };
+    },
+    bindEvent: function() {
         var me = this,
             addEvent = me.addEvent,
             content = me.content;
@@ -346,7 +353,7 @@ shitu.prototype = {
     },
     hiddenContent: function(e, tg) {
         var e = window.event || e,target = e.srcElement || e.target,id,
-        	me = this;
+            me = this;
         while (target && target.getAttribute && target.tagName != 'BODY' && target.tagName != 'HTML') {
             id = target.getAttribute('id');
             if (id == 'stcontent') {
@@ -365,7 +372,7 @@ shitu.prototype = {
     },
     fixedMouse: function(e, target) {
         var related,type = e.type.toLowerCase(),
-        	me = this;//这里获取事件名
+            me = this;//这里获取事件名
         if (type == 'mouseover') {
             related = e.relatedTarget || e.fromElement
         } else if (type == 'mouseout') {
@@ -400,7 +407,7 @@ shitu.prototype = {
         this.sugTg = 0;
         this.isDisplay=0;
         // this.kw.focus();
-        this.homeForm.style.visibility = 'visible';
+       // this.homeForm.style.visibility = 'visible';
         this.entry.style.visibility = 'visible';
     },
     displayst: function(tag) {
@@ -409,7 +416,7 @@ shitu.prototype = {
         if (this.hpobj) this.hpobj.style.display = 'none';
         this.sugTg = 1;
         tag&&this.url.focus();
-        this.homeForm.style.visibility = 'hidden';
+        //this.homeForm.style.visibility = 'hidden';
         this.entry.style.visibility = 'hidden';
     },
     checkImgType: function(fileURL) {
@@ -600,43 +607,53 @@ shitu.prototype = {
     }
 };
 
-
-
-
-
-
-
 /**
  * 执行代码
  *
  */
-var st = new shitu();
+var st = new imageSearch(id, opt);
     st.init();
     window.stInstance = st;
     var flashCon = document.getElementById('flashcontent');
-    if(((parseInt(swf.version, 10) || 0) < 10) || !flashCon){
-        flashCon.style.display = 'none';
-    }else{
-        try{
-            swf.create({
-            	id: 'STUUpload',
-            	url: 'http://img.baidu.com/img/image/stu/STUpload2.swf?v=0108',
-            	width: '103',
-            	height: '28',
-            	align: 'top',
-            	wmode: 'transparent',
-            	allowscriptaccess: 'always',
-            	errorMessage: '载入FLASH出错',
-            	vars: { 
-            		uploadurl: '/pictureup/uploadshitu?fr=flash&fm=index&pos=upload', 
-            		compress: 1
-            	},
-            	ver: '10.1.0'
-            }, 'flashcontent');
+    // if(((parseInt(swfobject.getFlashPlayerVersion().major, 10) || 0) < 10) || !flashCon){
+    //     flashCon.style.display = 'none';
+    // }else{
+    //     try{
+    //         var flashvars = false; 
+    //         var attObj = {
+    //             id: 'flashcontent'
+    //         }
+    //         var params = { 
+    //           align: 'top', 　
+    //           wmode: 'transparent',
+    //           allowscriptaccess:'always',
+    //           errorMessage: '载入FLASH出错',
+    //             vars: { 
+    //                 uploadurl: '/pictureup/uploadshitu?fr=flash&fm=index&pos=upload', 
+    //                 compress: 1
+    //             }
+    //         }; 
+    //         swfobject.createSWF("http://img.baidu.com/img/image/stu/STUpload2.swf?v=0108", "STUUpload", "103", "28", "10.1.0", "expressInstall.swf",flashvars, params, attObj);
+    //         // swf.create({
+    //         //     id: 'STUUpload',
+    //         //     url: 'http://img.baidu.com/img/image/stu/STUpload2.swf?v=0108',
+    //         //     width: '103',
+    //         //     height: '28',
+    //         //     align: 'top',
+                
+    //         //     allowscriptaccess: 'always',
+    //         //     errorMessage: '载入FLASH出错',
+    //         //     vars: { 
+    //         //         uploadurl: '/pictureup/uploadshitu?fr=flash&fm=index&pos=upload', 
+    //         //         compress: 1
+    //         //     },
+    //         //     ver: '10.1.0'
+    //         // }, 'flashcontent');
 
-        }
-        catch(e){
-            flashCon.style.display = 'none';
-        }
+    //     }
+    //     catch(e){
+    //         flashCon.style.display = 'none';
+    //     }
 
-    }
+    // }
+}
