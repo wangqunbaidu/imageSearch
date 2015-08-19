@@ -76,10 +76,12 @@ imageSearch.prototype = {
         this.getTplArr();
         this.bindEvent();
     },
-    render: function(){
+    render: function(id, opt){
+        var container = document.getElementById(id);
         this.tpl = '<div id="stcontent"><a class="sttb" hidefocus="true" id="sttb" href="javascript:void(0)" style="display:none"><img class="st_camera" src="http://img2.bdstatic.com/static/home/widget/search_box_home/shitu/images/camera_b659d28.png" width="21" height="20"> <img class="st_camera_on" src="http://img0.bdstatic.com/static/home/widget/search_box_home/shitu/images/camera_on_5d123b7.png" width="21" height="20"><div class="st_tips">上传图片，搜索相关信息</div><div class="st_tips_arrow_in"></div><div class="st_tips_arrow_out"></div></a><div id="stsug" class="stsug" style="display:none"><div id="sthead">搜索图片信息</div><form id="form1" target="_self" enctype="multipart/form-data" action="http://image.baidu.com/pictureup/uploadshitu" method="get" name="form1"><div id="sturl"><span class="stuwr"><input type="text" id="stuurl" value="" autocomplete="off" class="stuurl" name="objurl"></span> <span class="stsb"><input type="submit" id="sbobj" class="stsb2" onmousedown="this.className=&quot;stsb2 stsb3&quot;" onmouseout="this.className=&quot;stsb2&quot;" onmouseover="this.className=&quot;stsb2 stsb4&quot;" value="百度一下"></span></div><input name="rt" value="0" type="hidden"> <input name="rn" value="10" type="hidden"> <input name="ct" value="1" type="hidden"> <input name="stt" value="0" type="hidden"> <input name="tn" value="shituresultpc" type="hidden"> <input name="filename" id="filename" value="" type="hidden"> <input id="shitu1" name="uptype" value="paste" type="hidden"></form><div class="stf"><form id="form2" target="_self" enctype="multipart/form-data" action="http://image.baidu.com/pictureup/uploadshitu" method="post" name="form2"><a id="uploadImg" href="javascript:void(0)">从本地上传 <input type="file" name="image" id="stfile" size="2"> <span id="flashcontent"><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="STUUpload" width="103" height="28" align="top"><param name="wmode" value="transparent"><param name="allowscriptaccess" value="always"><param name="movie" value="http://img.baidu.com/img/image/stu/STUpload2.swf?v=0108"><param name="flashvars" value="uploadurl=http%3A%2F%2Fimage.baidu.com%2Fpictureup%2Fuploadshitu%3Ffr%3Dflash%26fm%3Dindex%26pos%3Dupload&amp;logurl=http%3A%2F%2Fimgstat.baidu.com%2F9.gif%3Frainbow%3D1%26type%3DsearchNum%26p%3DuploadSearch%26form%3Dwantu%26flash%3D1%26t%3D&amp;compress=1"><embed width="103" height="28" align="top" wmode="transparent" allowscriptaccess="always" errormessage="载入FLASH出错" ver="10.1.0" flashvars="uploadurl=http%3A%2F%2Fimage.baidu.com%2Fpictureup%2Fuploadshitu%3Ffr%3Dflash%26fm%3Dindex%26pos%3Dupload&amp;logurl=http%3A%2F%2Fimgstat.baidu.com%2F9.gif%3Frainbow%3D1%26type%3DsearchNum%26p%3DuploadSearch%26form%3Dwantu%26flash%3D1%26t%3D&amp;compress=1" src="http://img.baidu.com/img/image/stu/STUpload2.swf?v=0108" name="STUUpload" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></object></span></a> <span class="st_paste_url">粘贴图片网址</span> <img id="sthelp" width="13" height="13" src="./images/mark.png"><div class="st_dragtg" id="dragtg" style="display:none">提示：您也可以把图片拖到这里</div><input name="uptype" value="upload_pc" type="hidden"></form></div><div class="stmore" id="stmore" style="display:none"><b>如何粘贴图片网址</b><ul><li>右键点击网页上的图片，选择“复制图片网址”；</li><li>在搜索框中，粘贴该网址(Ctrl+V)，点击“百度一下”</li></ul><div class="stmore_arrow_in"></div><div class="stmore_arrow_out"></div></div><a class="closest" href="javascript:void(0)" id="closest" title="关闭">关闭</a><div id="point" style="display:none"><img src="http://img1.bdstatic.com/img/image/shitu/feimg/uploading.gif"><span>上传中，请稍候...</span></div><div id="dragtip" style="display:none"><div>搜索图片信息</div><span>将图片拖到此处</span><div class="drag_dot_area drag_dot_left_top"></div><div class="drag_dot_area drag_dot_left_bottom"></div><div class="drag_dot_area drag_dot_right_top"></div><div class="drag_dot_area drag_dot_right_bottom"></div></div><div class="left-border"></div><div class="right-border"></div></div></div>';
-        this.dialog = '';
-        $(this.tpl).appendTo($('#' + this.id));
+        
+        this.appendHTML(container, this.tpl);
+        // $(this.tpl).appendTo($('#' + this.id));
 
         
     },
@@ -313,9 +315,23 @@ imageSearch.prototype = {
                 me.submitForm(true,me.form,'urlSearch');
             }else{
                 return;
-            }
+            };
             me.point.style.display = 'block';
         });
+    },
+    appendHTML: function(container, html) {
+        var divTemp = document.createElement('div'), nodes = null
+            // 文档片段，一次性append，提高性能
+            , fragment = document.createDocumentFragment();
+        divTemp.innerHTML = html;
+        nodes = divTemp.childNodes;
+        for (var i=0, length=nodes.length; i<length; i+=1) {
+           fragment.appendChild(nodes[i].cloneNode(true));
+        }
+        container.appendChild(fragment);
+        // 据说下面这样子世界会更清净
+        nodes = null;
+        fragment = null;
     },
     /**
      * 初始化入口显示状态
