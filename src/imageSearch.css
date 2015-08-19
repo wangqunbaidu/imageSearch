@@ -1,44 +1,43 @@
 
 /*识图入口*/
-.home_search #search{
-    z-index: 87;
-}
-.home_search #stcontent{
+
+#stcontent{
     position:absolute;
     left:0px;
     top:0px;
     width:640px;
     height:5px;
-    z-index:7;
+    z-index:2;
     zoom:1;
 }
-.home_search #stcontent form{
+#stcontent form{
     position:relative;
     _width:625px;
 }
-.home_search #closest,.home_search #sthead{
+#closest, #sthead{
     background: url("images/search_kinds_icon.png") no-repeat;
     _background: url("images/search_kinds_icon_ie6.png") no-repeat;
 }
-.home_search #sttb{   
+#sttb{   
     _background: url("images/search_kinds_icon_ie6.png");
 }
-.home_search #sttb{
+#sttb{
     position: absolute;
-    right: 114px;
+    left: 114px;
     top: 12px;
     display: block;
     width: 21px;
     outline: none;
     height: 20px;
+    font-size: 14px;
     z-index: 1;
     text-indent:-999em;
     _background-position:-25px 0px;
 }
-.home_search #sttb:hover {
+#sttb:hover {
     _background-position: 0px 0px;
 }
-.home_search #sttb .st_camera,.home_search #sttb .st_camera_on{
+#sttb .st_camera, #sttb .st_camera_on{
     position: absolute;
     left: 0px;
     top:-2px;
@@ -47,17 +46,17 @@
     border: none;
     _display:none;
 }
-.home_search #sttb .st_camera_on{
+#sttb .st_camera_on{
     display: none;
 }
-.home_search #sttb:hover .st_camera{
+#sttb:hover .st_camera{
     display:none;
 }
-.home_search #sttb:hover .st_camera_on{
+#sttb:hover .st_camera_on{
     display:block;
     _display:none;
 }
-.home_search #sttb .st_tips{
+#sttb .st_tips{
     display:none;
     background:#fff;
     width:132px;
@@ -68,6 +67,7 @@
     position:absolute;
     top:28px;
     left:-70px;
+    font-size: 12px;
     text-indent:0px;
     cursor:default;
     border: 1px solid #ebebeb;
@@ -79,7 +79,7 @@
     box-shadow: 0 1px 1px 0 rgba(4,0,0,.1);
     z-index:1500;
 }
-.home_search #sttb .st_tips_arrow_in{
+#sttb .st_tips_arrow_in{
     display:none;
     position:absolute;
     top:15px;
@@ -94,8 +94,7 @@
     z-index: 1502;
     _display:none;
 }
-
-.home_search #sttb .st_tips_arrow_out{
+#sttb .st_tips_arrow_out{
     display:none;
     position:absolute;
     top:11px;
@@ -110,16 +109,16 @@
     z-index: 1501;
     _display:none;
 }
-.home_search #sttb:hover .st_tips,#sttb:hover .st_tips_arrow_in,.home_search #sttb:hover .st_tips_arrow_out
+#sttb:hover .st_tips, #sttb:hover .st_tips_arrow_in, #sttb:hover .st_tips_arrow_out
 {
     display:block;
     _display:none;
 }
 
-.home_search #stsug{
+#stsug{
     width:625px;
     position:absolute;
-    top:-23px;
+    top:36px;
     left:0px;
     padding:15px 0 0 15px;
     height:114px;
@@ -132,7 +131,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#70ffffff, endColorstr=#70ffffff);
     _background:#fff;
 }
-.home_search #stsug .left-border{
+#stsug .left-border{
     display: none;
     position:absolute;
     left:0;
@@ -141,7 +140,7 @@
     height:130px;
     background: url("http://img0.bdstatic.com/t/shituimage.gif") no-repeat scroll -32px -113px transparent;
 }
-.home_search #stsug .right-border{
+#stsug .right-border{
     display: none;
     position:absolute;
     right:0;
@@ -150,7 +149,7 @@
     height:100%;
     background: url("http://img0.bdstatic.com/t/shituimage.gif") no-repeat scroll -60px -113px transparent;
 }
-.home_search #sthead{
+#sthead{
     font-weight:bold;
     font-size:16px;
     line-height:16px;
@@ -162,7 +161,7 @@
     margin-bottom: 10px;
     background-position:0px -22px; 
 }
-.home_search #closest{
+#closest{
     position:absolute;
     display:block;
     width:21px;
@@ -174,22 +173,22 @@
     z-index:6;
     background-position:-59px 0px;
 }
-.home_search #closest:hover{
+#closest:hover{
     background-position:-81px 0px;
 }
-.home_search .stf{
+.stf{
     line-height:14px;
     margin-top:13px;
     font-size:13px;
     height:20px;
 }
-.home_search .stf span,.stf img,.stf a{
+.stf span,.stf img,.stf a{
     vertical-align:top;
 }
-.home_search .stf span{
+.stf span{
     color:#010101;
 }
-.home_search .stf #sthelp{
+.stf #sthelp{
     cursor:pointer;
     /**position:relative;
     *top:-1px;*/
@@ -197,11 +196,11 @@
     left: 229px;
     top:8px;
 }
-.home_search .stf .partition{
+.stf .partition{
     margin:0 8px;
     color:#AAA9A9;
 }
-.home_search .stf .st_paste_url{
+.stf .st_paste_url{
     display: inline-block;
     overflow: hidden;
     cursor:default;
@@ -219,7 +218,7 @@
     font-family:"microsoft yahei";
     border-left:1px solid #a8a8a8; 
 }
-.home_search .stf #uploadImg{
+.stf #uploadImg{
     display:inline-block;
     overflow:hidden;
     cursor:pointer;
@@ -238,7 +237,7 @@
     text-align: center;
     font-family:"microsoft yahei"; 
 }
-.home_search .stf .st_dragtg{
+.stf .st_dragtg{
     display: inline-block;
     position: absolute;
     left: 412px;
@@ -248,7 +247,7 @@
     font-family:"microsoft yahei"; 
     font-size: 14px;
 }
-.home_search .stf #stfile {
+.stf #stfile {
     position: absolute;
     cursor: pointer;
     z-index: 100;
@@ -259,7 +258,7 @@
     background:none;
     border:none;
 }
-.home_search .stuwr{
+.stuwr{
     width:505px;
     height:34px;
     display:inline-block;
@@ -268,7 +267,7 @@
     vertical-align:top;
     background-color:white;
 }
-.home_search .stuurl {
+.stuurl {
     font: 15px/22px arial;
     height: 22px;
     width: 501px;
@@ -281,7 +280,7 @@
 	outline:none;
     background:#fff;
 }
-.home_search .stsb {
+.stsb {
     display: inline-block;
     height: 36px;
     width: 102px;
@@ -295,7 +294,7 @@
     box-shadow: 0 1px 2px 0 rgba(4,0,0,.1);
    /* border:1px solid #d8d8d8;*/
 }
-.home_search .stsb2 {
+.stsb2 {
 /*    background-position:0px -46px;*/
     border: 0 none;
     cursor: pointer;
@@ -309,17 +308,17 @@
     background:#3388ff;
 
 }
-.home_search .stsb3 {
+.stsb3 {
     /*background-position: 0px -39px;*/
     background:#2671e4;
 }
-.home_search .stsb4 {
+.stsb4 {
     background:#317ef3;
 }
-.home_search .st_search_gray{
+.st_search_gray{
     background: url(images/bd_home_search_gray_btn.png) no-repeat;
 }
-.home_search .st_search_gray{
+.st_search_gray{
     border: 0 none;
     cursor: pointer;
     font-size: 16px;
@@ -331,18 +330,18 @@
     color:#000;
     background-position: 0px 0px;
 }
-.home_search .st_search_gray_on{
+.st_search_gray_on{
     background-position: 0px -40px;
 }
-.home_search .st_search_gray_down{
+.st_search_gray_down{
     background-position: 0px -80px;
 }
-.home_search .dragtg{
+.dragtg{
     font-size:13px;
     color:#727272;
     margin-top:5px;
 }
-.home_search #stmore{
+#stmore{
     position: absolute;
     left: 264px;
     top: 50px;
@@ -360,7 +359,7 @@
     -ms-box-shadow: 1px 1px 1px 1px rgba(4,0,0,.1);
     box-shadow: 1px 1px 1px 1px rgba(4,0,0,.1); 
 }
-.home_search .stmore_arrow_in{
+.stmore_arrow_in{
     position: absolute;
     left:-8px;
     bottom:13px;
@@ -372,7 +371,7 @@
     z-index: 10;
     _display:none;
 }
-.home_search .stmore_arrow_out{
+.stmore_arrow_out{
     position: absolute;
     left:-12px;
     bottom:10px;
@@ -384,7 +383,7 @@
     z-index: 9;
     _display:none;
 }
-.home_search #stmore ul{
+#stmore ul{
     list-style-type:decimal;
     line-height:18px;
     font-family:"宋体";
@@ -392,13 +391,13 @@
     margin-top:4px;
     height:36px;
 }
-.home_search #stmore ul li{
+#stmore ul li{
     height: 18px;
 }
-.home_search #stmore div{text-align:left;}
-.home_search #stmore div a{text-decoration:none;}
-.home_search #stmore div a:hover{text-decoration:underline;}
-.home_search #point,#dragtip {
+#stmore div{text-align:left;}
+#stmore div a{text-decoration:none;}
+#stmore div a:hover{text-decoration:underline;}
+#point, #dragtip {
     position: absolute;
     left: 1px;
     top: 1px;
@@ -409,20 +408,20 @@
     background-color: #F5F5F5;
     color: #A0A0A0;
 }
-.home_search #point{
+#point{
     z-index:5;
     vertical-align:middle;
     text-align:center;
     height:79px;
     padding-top:49px;
 }
-.home_search #point img{margin-right:8px;}
-.home_search #point span,#point img {
+#point img{margin-right:8px;}
+#point span,#point img {
     line-height: 24px;
     vertical-align:middle;
     font:normal 16px '微软雅黑',Arial;
 }
-.home_search #dragtip{
+#dragtip{
     text-align:left;
     color:black;
     background:none;
@@ -432,7 +431,7 @@
     background-image: -ms-linear-gradient(rgba(255, 255, 255, .7), rgba(255, 255, 255, .7));
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#70ffffff, endColorstr=#70ffffff);
 }
-.home_search #dragtip div{
+#dragtip div{
     font-weight:bold;
     margin:10px 0 0 10px;
     font-size:14px;
@@ -440,7 +439,7 @@
     _display:block;
 
 }
-.home_search #dragtip span{
+#dragtip span{
     margin:52px auto 0 auto;
     _margin-top:28px;
     display:block;
@@ -448,34 +447,34 @@
     width:119px;
    font-family:"microsoft yahei"; 
 }
-.home_search #dragtip .drag_dot_area{
+#dragtip .drag_dot_area{
     position: absolute;
     width:15px;
     height:15px;
     background:url(images/drag_dot_area.gif) no-repeat;
     display: block;
 }
-.home_search #dragtip .drag_dot_left_top{
+#dragtip .drag_dot_left_top{
     top:10px;
     left:200px;
     background-position: 0px 0px;
 }
-.home_search #dragtip .drag_dot_left_bottom{
+#dragtip .drag_dot_left_bottom{
     bottom:30px;
     left:200px;
     background-position: 0px -36px;
 }
-.home_search #dragtip .drag_dot_right_top{
+#dragtip .drag_dot_right_top{
     top:10px;
     left:400px;
     background-position: -36px 0px;
 }
-.home_search #dragtip .drag_dot_right_bottom{
+#dragtip .drag_dot_right_bottom{
     bottom:30px;
     left:400px;
     background-position: -36px -36px;
 }
-.home_search #flashcontent{
+#flashcontent{
     position:absolute;
     left:0;
     top:0;
