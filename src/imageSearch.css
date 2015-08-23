@@ -12,14 +12,12 @@
 
 #stcontent form {
     position: relative;
-
     _width: 625px;
 }
 
 #closest,
 #sthead {
     background: url("images/search_kinds_icon.png") no-repeat;
-
     _background: url("images/search_kinds_icon_ie6.png") no-repeat;
 }
 
@@ -72,7 +70,6 @@
 
 #sttb:hover .st_camera_on {
     display: block;
-
     _display: none;
 }
 
