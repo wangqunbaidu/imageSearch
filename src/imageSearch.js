@@ -663,6 +663,7 @@ var st = new imageSearch(id, opt);
     st.init();
     window.stInstance = st;
     var flashCon = document.getElementById('flashcontent');
+    //加入flash安装判断
     // if(((parseInt(swfobject.getFlashPlayerVersion().major, 10) || 0) < 10) || !flashCon){
     //     flashCon.style.display = 'none';
     // }else{
