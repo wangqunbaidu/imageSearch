@@ -420,7 +420,8 @@
         },
         fixedMouse: function(e, target) {
             var related,type = e.type.toLowerCase(),
-                me = this;//这里获取事件名
+                me = this;
+                //这里获取事件名
             if (type == 'mouseover') {
                 related = e.relatedTarget || e.fromElement
             } else if (type == 'mouseout') {
@@ -454,8 +455,6 @@
             if (this.hpobj) this.hpobj.style.display = '';
             this.sugTg = 0;
             this.isDisplay=0;
-            // this.kw.focus();
-           // this.homeForm.style.visibility = 'visible';
             this.entry.style.visibility = 'visible';
         },
         displayst: function(tag) {
