@@ -6,6 +6,7 @@
  * @author: wangqun
  * @date: 2015/03/08
  */
+
  var shitu = function(id, opt){
 
  
@@ -338,8 +339,8 @@
          */
 
         flashChecker: function() {
-            var hasFlash=0;　　　　//是否安装了flash
-            var flashVersion=0;　　//flash版本
+            var hasFlash = 0;　　　　//是否安装了flash
+            var flashVersion = 0;　　//flash版本
 
             if(document.all) {
                 var swf = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
