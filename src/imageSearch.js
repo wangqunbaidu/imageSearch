@@ -666,12 +666,6 @@
         if(((parseInt(st.flashChecker().f, 10) || 0) < 10) || !flashCon){
             flashCon.style.display = 'none';
         }else{
-            try{
-
-            }
-            catch(e){
-                flashCon.style.display = 'none';
-            }
-
+            flashCon.style.display = 'block';
         }
 }
