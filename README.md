@@ -12,7 +12,7 @@ ImageSearch是一个简单可依赖的图片识别服务组件。
 
 ##使用方式：
 
- var btn = shitu('shituBtn', {/**配置参数**/});
+	var btn = shitu('shituBtn', {/**配置参数**/});
 
 ##参数描述
 
