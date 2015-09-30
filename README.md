@@ -17,3 +17,7 @@ ImageSearch是一个简单可依赖的图片识别服务组件。
 ##参数描述
 
 	opt = {};
+
+	hoverTag
+
+	drag
